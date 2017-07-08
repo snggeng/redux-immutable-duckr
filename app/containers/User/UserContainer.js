@@ -58,7 +58,7 @@ function mapStateToProps ({users, usersDucks}, props) {
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     ...usersActionCreators,
-    ...usersDucksActionCreators
+    ...usersDucksActionCreators,
   }, dispatch)
 }
 

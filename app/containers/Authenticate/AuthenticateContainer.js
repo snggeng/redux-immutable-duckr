@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Authenticate } from 'components'
-import auth from 'helpers/auth'
+// import auth from 'helpers/auth'
+import { user } from 'config/constants'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userActionCreators from 'redux/modules/users'
@@ -16,7 +17,7 @@ const AuthenticateContainer = React.createClass({
   },
   handleAuth (e) {
     e.preventDefault()
-    this.props.fetchAndHandleAuthedUser()
+    this.props.fetchAndHandleAuthedUser(user)
       .then(() => this.context.router.replace('feed'))
   },
   render () {

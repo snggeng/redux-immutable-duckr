@@ -1,4 +1,4 @@
-import auth, { logout, saveUser } from 'helpers/auth'
+import auth, { saveUser, logout } from 'helpers/auth'
 import { formatUserInfo } from 'helpers/utils'
 import { fetchUser } from 'helpers/api'
 
@@ -45,15 +45,30 @@ export function fetchingUserSuccess (uid, user, timestamp) {
   }
 }
 
-export function fetchAndHandleAuthedUser () {
+export function fetchAndHandleAuthedUser (user) {
   return function (dispatch) {
     dispatch(fetchingUser())
-    return auth().then(({user, credential}) => {
+    return auth()
+    .then((user) => {
+    // Set User profile
+      if (user) {
+        user.updateProfile({
+          displayName: user.providerData[0].email.split('@')[0],
+          photoURL: 'https://image.flaticon.com/icons/svg/236/236831.svg',
+        }).then(() => {
+          // Update successful.
+        }, (error) => {
+          // An error happened.
+          if (error) return error
+        })
+      }
+    })
+    .then((user) => {
       const userData = user.providerData[0]
       const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
       return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
     })
-    .then(({user}) => saveUser(user))
+    .then((user) => saveUser(user))
     .then((user) => dispatch(authUser(user.uid)))
     .catch((error) => dispatch(fetchingUserFailure(error)))
   }
@@ -68,7 +83,7 @@ export function logoutAndUnauth () {
 
 export function removeFetchingUser () {
   return {
-    type: REMOVE_FETCHING_USER
+    type: REMOVE_FETCHING_USER,
   }
 }
 

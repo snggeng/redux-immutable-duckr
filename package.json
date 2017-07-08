@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/ReactjsProgram/Redux-Immutable#readme",
   "dependencies": {
+    "classnames": "^2.2.5",
     "firebase": "^3.2.0",
     "immutable": "^3.8.1",
+    "prop-types": "^15.5.10",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-icons": "^2.2.1",
