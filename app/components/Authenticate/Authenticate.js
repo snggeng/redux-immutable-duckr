@@ -13,7 +13,7 @@ Authenticate.propTypes = {
 
 export default function Authenticate ({onAuth, isFetching, error, email, password, handleChange}) {
   return (
-    <div classNames={[loginForm, centeredContainer].join(' ')}>
+    <div className={[loginForm, centeredContainer].join(' ')}>
       <h1 className={largeHeader}>{'Authenticate'}</h1>
       <FacebookAuthButton isFetching={isFetching}
                           onAuth={onAuth}
