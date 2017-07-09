@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { default as ReactModal } from 'react-modal'
 import {
   newDuckTop, pointer, newDuckInputContainer,
@@ -36,7 +37,8 @@ export default function Modal (props) {
   return (
     <span className={darkBtn} onClick={props.openModal}>
       {'Duck'}
-      <ReactModal style={modalStyles} isOpen={props.isOpen} onRequestClose={props.closeModal}>
+      <ReactModal style={modalStyles} isOpen={props.isOpen}
+        onRequestClose={props.closeModal} contentLabel={'Create New DU=uck'}>
         <div className={newDuckTop}>
           <span>{'Compose new Duck'}</span>
           <span onClick={props.closeModal} className={pointer}>{'X'}</span>

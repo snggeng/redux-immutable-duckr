@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { Navigation } from 'components'
 import { connect } from 'react-redux'
@@ -11,10 +12,13 @@ import { firebaseAuth } from 'config/constants'
 const MainContainer = React.createClass({
   propTypes: {
     isAuthed: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     setUsersLikes: PropTypes.func.isRequired,
     authUser: PropTypes.func.isRequired,
     fetchingUserSuccess: PropTypes.func.isRequired,
     removeFetchingUser: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired,
+    children: PropTypes.object.isRequired,
   },
   contextTypes: {
     router: PropTypes.object.isRequired,
@@ -31,7 +35,7 @@ const MainContainer = React.createClass({
           this.context.router.replace('feed')
         }
       } else {
-         this.props.removeFetchingUser()
+        this.props.removeFetchingUser()
       }
     })
   },

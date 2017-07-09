@@ -1,24 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { button } from './styles.css'
+import { formField } from 'sharedStyles/styles.css'
 
 FacebookAuthButton.propTypes = {
   onAuth: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool,
+  handleChange: PropTypes.func.isRequired,
 }
 
-export default function FacebookAuthButton ({onAuth, isFetching}) {
-
-  handleChange = (e) => {
-    console.log(e.target)
-    console.log(e.target.text)
-    console.log('name', e.target.name)
-  }
-
+export default function FacebookAuthButton ({onAuth, isFetching, handleChange}) {
   return (
     <div>
-      <input name='email' placeholder='Email'onChange={this.handleChange}/>
-      <input name='password' type='password' placeholder='Password' onChange={this.handleChange}/>
+      <input className={formField} name='email' placeholder='Email'
+        onChange={handleChange}/>
+        <br />
+      <input className={formField} name='password' type='password'
+        placeholder='Password'
+        onChange={handleChange}/>
       <button onClick={onAuth} className={button}>
         {isFetching === true
           ? 'Loading'

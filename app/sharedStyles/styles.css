@@ -12,12 +12,14 @@ html, body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 500px;
 }
 
 .largeHeader {
   color: #4a90e2;
   font-weight: 100;
-  font-size: 100px;
+  font-size: 50px;
+  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -91,4 +93,116 @@ html, body {
 
 .clickable:hover {
   transform: scale(1.1);
+}
+
+/*FORM DEFAULTS*/
+
+.loginFormContainer {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	background: rgba(112, 85, 193, 0.64);
+  align-self: center;
+  text-align: center;
+  color: blue;
+}
+
+.loginForm {
+	min-width: 400px;
+	padding: 60px 80px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 1);
+}
+
+.formField {
+	margin-bottom: 10px;
+	display: block;
+	padding: 10px 15px 11px;
+	width: 100%;
+	outline: none;
+	border: 2px solid #e0d6fd;
+	border-radius: 30px;
+	font-size: 13px;
+	font-weight: 500;
+	font-family: 'Quicksand', Arial, sans-serif;
+	letter-spacing: 1px;
+}
+.fieldValidationText {
+	display: block;
+	margin-left: 10px;
+	padding: 4px 0px 0px;
+	text-align: left;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.formFieldValidation {
+	@extend .form-field;
+	color: #ff3030;
+	label {
+		input {
+			border: 2px solid #ff3030;
+			&:focus {
+				border: 2px solid #ff3030;
+			}
+		}
+	}
+}
+
+/*AVATAR INPUT*/
+
+.avatarInput {
+	text-align: center;
+	span {
+		display: inline-block;
+		margin-bottom: 10px;
+		padding: 0px;
+		width: auto;
+	}
+	img {
+		width: 40%;
+		height: auto;
+		display: block;
+		margin: 0px auto;
+		border: 2px solid #e0d6fd;
+		border-radius: 100%;
+		cursor: pointer;
+		@include smoth(0.5s);
+		&:hover {
+			border: 2px solid #7055c1;
+		}
+	}
+	#file-input {
+		display: none;
+	}
+}
+
+/*FORM BUTTON*/
+
+button {
+	display: block;
+	margin: 20px auto 0px;
+	padding: 12px 40px 13px;
+	font-size: 15px;
+	font-weight: 700;
+	background: #7055c1;
+	color: #fff;
+	border: 0px;
+	border-radius: 4px;
+	cursor: pointer;
+	@include smoth(0.5s);
+	&:hover {
+		background: #6755a0;
+	}
+}
+
+/*FORM ERRORS*/
+
+.errorIndicator {
+	display: block;
+	padding: 5px 0px 0px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: 700;
+	color: #ff3030;
 }

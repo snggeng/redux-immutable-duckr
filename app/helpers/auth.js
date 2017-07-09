@@ -1,8 +1,6 @@
 import { ref, firebaseAuth } from 'config/constants'
 
-export default function auth () {
-  const email = 'admin@bigbox.com.sg'
-  const password = 'M&9$h-B7VsPjh8D8'
+export default function auth (email, password) {
   return firebaseAuth().signInWithEmailAndPassword(email, password).catch((error) => {
   // Handle Errors here.
     const errorCode = error.code

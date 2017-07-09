@@ -45,31 +45,30 @@ export function fetchingUserSuccess (uid, user, timestamp) {
   }
 }
 
-export function fetchAndHandleAuthedUser (user) {
+export function fetchAndHandleAuthedUser (user, email, password) {
   return function (dispatch) {
     dispatch(fetchingUser())
-    return auth()
+    return auth(email, password)
     .then((user) => {
     // Set User profile
       if (user) {
+        // console.log(user)
         user.updateProfile({
           displayName: user.providerData[0].email.split('@')[0],
           photoURL: 'https://image.flaticon.com/icons/svg/236/236831.svg',
         }).then(() => {
           // Update successful.
+          const userData = user.providerData[0]
+          const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
+          return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
         }, (error) => {
           // An error happened.
           if (error) return error
         })
+        .then((user) => saveUser(user))
+        .then((user) => dispatch(authUser(user.uid)))
       }
     })
-    .then((user) => {
-      const userData = user.providerData[0]
-      const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
-      return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
-    })
-    .then((user) => saveUser(user))
-    .then((user) => dispatch(authUser(user.uid)))
     .catch((error) => dispatch(fetchingUserFailure(error)))
   }
 }
