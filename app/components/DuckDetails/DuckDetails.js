@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
-import { DuckContainer, RepliesContainer } from 'containers'
+import { DuckContainer } from 'containers'
 import {
   mainContainer, container, content, repliesContainer,
   replyTextAreaContainer, replyTextArea } from './styles.css'
 import { subHeader, darkBtn, errorMsg } from 'sharedStyles/styles.css'
-import { formatReply } from 'helpers/utils'
+// import { formatReply } from 'helpers/utils'
 
 Reply.propTypes = {
   submit: PropTypes.func.isRequired,
@@ -50,10 +50,9 @@ export default function DuckDetails ({duckId, isFetching, authedUser, error, add
         : <div className={container}>
             <div className={content}>
               <DuckContainer duckId={duckId} hideLikeCount={false} hideReplyBtn={true} />
-              <Reply submit={(replyText) => addAndHandleReply(duckId, formatReply(authedUser, replyText))} />
             </div>
             <div className={repliesContainer}>
-              <RepliesContainer duckId={duckId}/>
+              <h1>{'Container for Information'}</h1>
             </div>
           </div>}
       {error ? <p className={errorMsg}>{error}</p> : null}
