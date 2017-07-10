@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 import { formatTimestamp } from 'helpers/utils'
 import Reply from 'react-icons/lib/fa/mail-reply'
-import Star from 'react-icons/lib/fa/star'
+// import Star from 'react-icons/lib/fa/star'
 import {
   duckContainer, contentContainer, avatar, actionContainer,
-  header, text, likeReplyContainer, icon, likedIcon, author,
+  header, text, likeReplyContainer, icon, author,
 } from './styles.css'
 import { Map } from 'immutable'
 
@@ -21,8 +21,8 @@ Duck.propTypes = {
 }
 
 export default function Duck (props) {
-  const starIcon = props.isLiked === true ? likedIcon : icon
-  const starFn = props.isLiked === true ? props.handleDeleteLike : props.addAndHandleLike
+  // const starIcon = props.isLiked === true ? likedIcon : icon
+  // const starFn = props.isLiked === true ? props.handleDeleteLike : props.addAndHandleLike
   return (
     <div
       className={duckContainer}
@@ -40,8 +40,7 @@ export default function Duck (props) {
               ? null
               : <Reply className={icon} />}
             <div className={actionContainer}>
-              <Star className={starIcon} onClick={(e) => starFn(props.duck.get('duckId'), e)} />
-              {props.hideLikeCount === true ? null : <div>{props.numberOfLikes}</div>}
+            <p> {'Action Container'} </p>
             </div>
           </div>
         </div>

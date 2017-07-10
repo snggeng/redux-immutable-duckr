@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { loginForm, centeredContainer, largeHeader, errorMsg } from 'sharedStyles/styles.css'
-import { FacebookAuthButton } from 'components'
+import { Login } from 'components'
 
 Authenticate.propTypes = {
   error: PropTypes.string,
@@ -15,7 +15,7 @@ export default function Authenticate ({onAuth, isFetching, error, email, passwor
   return (
     <div className={[loginForm, centeredContainer].join(' ')}>
       <h1 className={largeHeader}>{'Authenticate'}</h1>
-      <FacebookAuthButton isFetching={isFetching}
+      <Login isFetching={isFetching}
                           onAuth={onAuth}
                           email={email}
                           password={password}

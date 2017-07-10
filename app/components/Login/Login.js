@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { button } from './styles.css'
 import { formField } from 'sharedStyles/styles.css'
 
-FacebookAuthButton.propTypes = {
+Login.propTypes = {
   onAuth: PropTypes.func.isRequired,
   isFetching: PropTypes.bool,
   handleChange: PropTypes.func.isRequired,
 }
 
-export default function FacebookAuthButton ({onAuth, isFetching, handleChange}) {
+export default function Login ({onAuth, isFetching, handleChange}) {
   return (
     <div>
       <input className={formField} name='email' placeholder='Email'
