@@ -7,22 +7,29 @@ import { Provider } from 'react-redux'
 import { checkIfAuthed } from 'helpers/auth'
 import { routerReducer, syncHistoryWithStore } from 'react-router-redux'
 import * as reducers from 'redux/modules'
-import { hashHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 
+// Initialize Store
 const store = createStore(combineReducers({...reducers, routing: routerReducer}), compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : (f) => f
 ))
 
-const history = syncHistoryWithStore(hashHistory, store)
+// Setup caching for browser history
+const history = syncHistoryWithStore(browserHistory, store)
 
 function checkAuth (nextState, replace) {
+  // if getting info from firebase, do nothing
   if (store.getState().users.isFetching === true) {
     return
   }
 
+  // On load, get isAuthed from firebase
   const isAuthed = checkIfAuthed(store)
   const nextPathName = nextState.location.pathname
+  // if (isAuthed !== true) {
+  //   browserHistory.push('/auth')
+  // }
   if (nextPathName === '/' || nextPathName === '/auth') {
     if (isAuthed === true) {
       replace('/feed')
@@ -34,8 +41,24 @@ function checkAuth (nextState, replace) {
   }
 }
 
+const requireLogin = (nextState, replace) => {
+  console.warn('require login')
+  // if getting info from firebase, do nothing
+  // if (store.getState().users.isFetching === true) {
+  //   return
+  // }
+
+  // On load, get isAuthed from firebase
+  const isAuthed = checkIfAuthed(store)
+  console.warn('user is authenticated', isAuthed)
+  if (!isAuthed) {
+  //  browserHistory.push('#/auth')
+    replace('/auth')
+  }
+}
+
 ReactDOM.render(
   <Provider store={store}>
-    {getRoutes(checkAuth, history)}
+    {getRoutes(checkAuth, requireLogin, history)}
   </Provider>,
 document.getElementById('app'))
