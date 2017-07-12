@@ -12,12 +12,12 @@ import { Map } from 'immutable'
 Duck.propTypes = {
   duck: PropTypes.instanceOf(Map),
   onClick: PropTypes.func,
-  isLiked: PropTypes.bool.isRequired,
-  addAndHandleLike: PropTypes.func.isRequired,
+  // isLiked: PropTypes.bool.isRequired,
+  // addAndHandleLike: PropTypes.func.isRequired,
   handleDeleteLike: PropTypes.func.isRequired,
-  numberOfLikes: PropTypes.number,
+  // numberOfLikes: PropTypes.number,
   hideReplyBtn: PropTypes.bool.isRequired,
-  hideLikeCount: PropTypes.bool.isRequired,
+  // hideLikeCount: PropTypes.bool.isRequired,
   goToProfile: PropTypes.func.isRequired,
 }
 
