@@ -12,7 +12,6 @@ html, body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 500px;
 }
 
 .largeHeader {
@@ -105,6 +104,7 @@ html, body {
   align-self: center;
   text-align: center;
   color: blue;
+  width: 200px;
 }
 
 .loginForm {
@@ -118,7 +118,7 @@ html, body {
 	margin-bottom: 10px;
 	display: block;
 	padding: 10px 15px 11px;
-	width: 100%;
+	width: 90%;
 	outline: none;
 	border: 2px solid #e0d6fd;
 	border-radius: 30px;

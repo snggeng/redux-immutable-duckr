@@ -11,3 +11,7 @@
 .button:hover {
   background: #1542A0;
 }
+
+.login {
+  width: 200px;
+}

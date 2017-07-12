@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { button } from './styles.css'
+import { button, login } from './styles.css'
 import { formField } from 'sharedStyles/styles.css'
 
 Login.propTypes = {
@@ -11,7 +11,7 @@ Login.propTypes = {
 
 export default function Login ({onAuth, isFetching, handleChange}) {
   return (
-    <div>
+    <div className={login}>
       <input className={formField} name='email' placeholder='Email'
         onChange={handleChange}/>
         <br />
